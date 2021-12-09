@@ -8,7 +8,7 @@ on:
 
 name: lints
 jobs:
-  yaml_lint:
+  yaml_lint_github:
     runs-on: ubuntu-latest
     steps:
       - run: echo "::error file=./.yamllint.yaml,line=31,col=1::[empty-lines] too many blank lines (1 > 0)"
@@ -18,6 +18,10 @@ jobs:
         with:
           config_file: .yamllint.yaml
           format: github
+  yaml_lint_parsable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - name: yaml-lint
         uses: mkatychev/action-yamllint@master
         with:
