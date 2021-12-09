@@ -1,0 +1,31 @@
+# see the yamllint docs for an explanation of each rule
+# https://yamllint.readthedocs.io/en/stable/rules.html
+extends: default
+ignore: |
+rules:
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation: disable
+  document-end:
+    present: false
+  # setting this to { present: false } is desirable, but as of yamllint v1.13.0
+  # that would throw a warning for any multi-document files (e.g., RBAC resources)
+  # see https://github.com/adrienverge/yamllint/issues/115
+  document-start: disable
+  empty-lines:
+    max: 1
+  empty-values:
+    forbid-in-block-mappings: true
+    forbid-in-flow-mappings: true
+  indentation:
+    spaces: 2
+    indent-sequences: true
+  line-length:
+    max: 120
+    allow-non-breakable-inline-mappings: true
+  octal-values:
+    forbid-implicit-octal: true
+  # https://yamllint.readthedocs.io/en/stable/rules.html?highlight=truthy#module-yamllint.rules.truthy
+  truthy:
+    check-keys: false
+
